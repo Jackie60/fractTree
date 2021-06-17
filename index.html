@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+</head>
+
+<body>
+  <canvas id='fract_canvas' width='1000' height='800'></canvas>
+
+    <script>
+      let expanse = document.getElementByID('fract_canvas');
+      let substrate = expanse.getContext('2D');
+
+      function draw(startX, startY, len, angle) {
+        substr.beginPath(); 
+        substrate.save();
+
+        substrate.translate(startX, startY); 
+        substrate.rotate(angle * Math.PI/180);
+        substrate.moveTo(0, 0);
+        substrate.lineTo(0, -len);
+        substrate.stroke();
+        
+        if(len < 10) { 
+          substrate.restore(); 
+          return;
+        }
+
+        draw(0, -len, len * 0.8, -15); 
+        draw(0, -len, len * 0.8, +15);
+
+        substrate.restore(); 
+
+      }
+      draw(400, 600, 120, 0);
+
+    </script>
+
+
+</body>
+
+</html>
