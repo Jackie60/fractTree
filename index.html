@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+???
 <html lang='en'>
 <head>
   <meta charset='UTF-8'>
@@ -11,24 +11,51 @@
     <script>
       let expanse = document.getElementByID('fract_canvas');
       let substrate = expanse.getContext('2D');
+      let paint = substrate.strokeColor; 
 
       function draw(startX, startY, len, angle) {
-        substr.beginPath(); 
+        substrate.beginPath(); 
         substrate.save();
 
         substrate.translate(startX, startY); 
         substrate.rotate(angle * Math.PI/180);
         substrate.moveTo(0, 0);
         substrate.lineTo(0, -len);
+
+
         substrate.stroke();
-        
+        //susbtrate.strokeStyle = "pink";
+        paint = 'pink';
+        substrate.fillStyle = "black";
+        substrate.shadowBlur = 15;
+        //substrate.shadowColor = 'rgb(255,0,255)';
+  
         if(len < 10) { 
           substrate.restore(); 
           return;
         }
 
-        draw(0, -len, len * 0.8, -15); 
-        draw(0, -len, len * 0.8, +15);
+
+/* ctx.moveTo(0, 0); 
+        ctx.lineTo(0, -len);
+        ctx.stroke();
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "rgb(255,0,255)";
+        //ctx.shadowColor = 'black';
+        if(len < 10) {
+            ctx.restore();
+            return;
+        }
+        draw(0, -len, len*0.8, angle-25, branchWidth*0.8);
+        //draw(0, -len, len*0.8, angle+13, branchWidth*0.8);
+        draw(0, -len, len*0.8, angle+25, branchWidth*0.8);
+        //draw(0, len, -len*0.8, angle+3, branchWidth*0.8);
+        ctx.restore();
+    }
+    draw(400, 600, 100, 17, 10);     
+*/ 
+        draw(300, -len, len * 0.8, -15); 
+        draw(300, -len, len * 0.8, +15);
 
         substrate.restore(); 
 
